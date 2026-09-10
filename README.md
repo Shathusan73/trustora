@@ -5,7 +5,7 @@ Premium AI-powered identity and face verification platform.
 ## Architecture
 
 ```text
-frontend/   Next.js (App Router) + Redux Toolkit + Framer Motion
+./          Next.js (App Router) + Redux Toolkit + Framer Motion
 backend/    ASP.NET Core clean architecture
   Api/ Application/ Domain/ Infrastructure/ AI/ Tests/
 docker/     Dockerfiles for local development
@@ -39,7 +39,6 @@ Copy `.env.example` to a local env file and fill secrets. Never commit real cred
 Frontend:
 
 ```bash
-cd frontend
 cp .env.local.example .env.local
 # NEXT_PUBLIC_API_URL=http://localhost:5080
 ```
@@ -85,7 +84,6 @@ Swagger: `http://localhost:5080/swagger`
 ### 4. Run frontend
 
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
@@ -184,4 +182,4 @@ docker compose up --build
 
 ## Project layout
 
-See `frontend/` and `backend/` for full source. Primary user routes: `/`, `/verify`, `/privacy`, `/terms`.
+See the repo root (Next.js app) and `backend/` for full source. Primary user routes: `/`, `/verify`, `/privacy`, `/terms`.
