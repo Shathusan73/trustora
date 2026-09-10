@@ -1,11 +1,15 @@
 import type { ApiError, ApiResponse } from "./types";
 
-const DEFAULT_API_URL = "http://localhost:5080";
+/**
+ * Empty = same-origin (Vercel rewrites /api/* → backend).
+ * Avoid http:// API URLs on the HTTPS Vercel site (browsers block mixed content).
+ */
+const DEFAULT_API_URL = "";
 
 export function getApiBaseUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || DEFAULT_API_URL
-  );
+  const configured = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+  if (configured !== undefined && configured !== "") return configured;
+  return DEFAULT_API_URL;
 }
 
 export class ApiClientError extends Error {
