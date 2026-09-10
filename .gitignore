@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+**/bin/
+**/obj/
+.next/
+out/
+dist/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+**/appsettings.*.local.json
+**/appsettings.Development.Local.json
+!.env.example
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Uploads / temp
+**/trustora-uploads/
+
+# Test / coverage
+TestResults/
+coverage/
+
+# Logs
+*.log

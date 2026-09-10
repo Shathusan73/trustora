@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium noir — identity security */
+  --background: #08090b;
+  --background-elevated: #0d0f13;
+  --foreground: #f4f4f5;
+  --muted: #9ca3af;
+  --muted-strong: #d4d4d8;
+  --surface: #111317;
+  --surface-elevated: #171a20;
+  --surface-hover: #1e2229;
+  --border: rgba(244, 244, 245, 0.07);
+  --border-strong: rgba(244, 244, 245, 0.13);
+  --accent: #e4e4e7;
+  --accent-hover: #fafafa;
+  --accent-secondary: #a5b4c8;
+  --accent-warm: #c4b5a0;
+  --accent-foreground: #09090b;
+  --success: #6ee7b7;
+  --warning: #f0c674;
+  --danger: #f0a8a8;
+  --danger-hover: #e89090;
+  --ring: rgba(228, 228, 231, 0.35);
+  --grid-line: rgba(244, 244, 245, 0.028);
+  --glow: rgba(228, 228, 231, 0.06);
+  --font-display: var(--font-outfit), var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-outfit);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 75% 45% at 50% -12%, rgba(165, 180, 200, 0.07), transparent 55%),
+    radial-gradient(ellipse 35% 30% at 90% 15%, rgba(110, 231, 183, 0.03), transparent 50%),
+    linear-gradient(180deg, #0b0c10 0%, #08090b 50%, #07080a 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100%;
+  letter-spacing: -0.011em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+::selection {
+  background: rgba(228, 228, 231, 0.22);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
+.trustora-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 25%, black 10%, transparent 70%);
+}
+
+.glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgba(23, 26, 32, 0.94),
+    rgba(17, 19, 23, 0.8)
+  );
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(228, 228, 231, 0.85),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(228, 228, 231, 0.2);
+  animation: scan 2.6s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 8%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 92%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+.face-ready-ring {
+  animation: pulse-ring 1.5s ease-in-out infinite;
+}
+
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 560;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+}
+
+.section-copy {
+  margin-top: 1rem;
+  max-width: 36rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scan-line,
+  .face-ready-ring,
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
